@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {WeatherInterface} from "../../../../models/interfaces/weather.interface";
 import {faDroplet, faTemperatureHigh, faTemperatureLow, faWind} from "@fortawesome/free-solid-svg-icons";
 
@@ -7,7 +7,8 @@ import {faDroplet, faTemperatureHigh, faTemperatureLow, faWind} from "@fortaweso
   templateUrl: './weather-card.component.html',
   styleUrls: ['./weather-card.component.scss']
 })
-export class WeatherChartComponent implements OnInit {
+export class WeatherChartComponent implements OnChanges   {
+
   // Entrada de dados
   @Input() weatherDataInput!: WeatherInterface;
   Temperature!: number;
@@ -19,8 +20,10 @@ export class WeatherChartComponent implements OnInit {
   humidityIcon = faDroplet;
   windIcon = faWind;
 
-  ngOnInit(): void {
-    this.updateWeatherData(this.weatherDataInput);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['weatherDataInput'] && changes['weatherDataInput'].currentValue) {
+      this.updateWeatherData(changes['weatherDataInput'].currentValue);
+    }
   }
 
   updateWeatherData(newData: WeatherInterface): void {
