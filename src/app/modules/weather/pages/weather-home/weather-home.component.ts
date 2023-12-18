@@ -26,7 +26,7 @@ export class WeatherHomeComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe({
         next: (response) => {
-          response && (this.weatherData == response);
+          this.weatherData = response;
           console.log(response)
         }
       },

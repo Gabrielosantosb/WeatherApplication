@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {WeatherInterface} from "../../../../models/interfaces/weather.interface";
+import {faDroplet, faTemperatureHigh, faTemperatureLow, faWind} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-weather-card',
@@ -7,10 +9,20 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class WeatherChartComponent implements OnInit{
   // Entrada de dados
-  @Input() weatherData!: string;
+  @Input() weatherDataInput!: WeatherInterface;
+  Temperature!: number;
+  MinTemperature !: number;
+  MaxTemperature !: number;
+
+  minTemperatureIcon = faTemperatureLow;
+  maxTemperaturaIcon = faTemperatureHigh;
+  humidityIcon = faDroplet;
+  windIcon = faWind;
 
   ngOnInit(): void {
-    console.log("Dados: ", this.weatherData)
+    this.Temperature = Number(this.weatherDataInput?.main.temp.toFixed(0).toString().substring(0, 2));
+    this.MinTemperature = Number(this.weatherDataInput?.main.temp_min.toFixed(0).toString().substring(0, 2));
+    this.MaxTemperature = Number(this.weatherDataInput?.main.temp_max.toFixed(0).toString().substring(0, 2));
   }
-
 }
+

@@ -45,6 +45,7 @@ fa-icon {
   height: 50%;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  z-index: 1; /* Add this line to set the z-index */
 }
 
 .lower-data {
@@ -68,7 +69,7 @@ fa-icon {
 
 .weather-data {
   position: relative;
-  z-index: 1;
+  z-index: 2; /* Make sure this value is higher than the z-index of upper-data */
   width: 100%;
   height: 100%;
   background-color: var(--shadow-dark);
