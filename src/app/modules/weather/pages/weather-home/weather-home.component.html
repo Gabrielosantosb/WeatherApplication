@@ -5,7 +5,6 @@
       placeholder="Buscar Localização"
       name="city"
       [(ngModel)]="initialCity"
-
     />
 
     <span (click)="onSubmit()">
@@ -17,5 +16,6 @@
         [icon]="searchIcon"></fa-icon>
     </span>
   </form>
+  <span *ngIf="isError" class="error-message">{{setError}}</span>
 </div>
 <app-weather-card *ngIf="weatherData" [weatherDataInput]="weatherData"></app-weather-card>

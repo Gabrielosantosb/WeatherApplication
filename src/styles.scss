@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --blue-1: #2242c2;
-  --blue-2: #0368ec;
+  --blue-2: #4073b3;
   --white: #fff;
   --grey-1: #ededed;
   --shadow-dark: rgba(0, 0, 0, 0.3);
@@ -165,4 +165,11 @@ fa-icon {
 }
 .search-icon {
   margin-left: 1em;
+}
+
+.error-message {
+  color: #FFA500;
+  font-size: 16px;
+  margin-top: 5px;
+  display: block;
 }
